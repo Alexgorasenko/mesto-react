@@ -1,10 +1,10 @@
-import React from 'react';
-import logo from '../logo.svg';
+import React from "react";
+import logo from "../logo.svg";
 
 function Header() {
   return (
     <header className="header">
-      <img src={logo} alt="Место Россия" className="header__logo"/>
+      <img src={logo} alt="Место Россия" className="header__logo" />
     </header>
   );
 }

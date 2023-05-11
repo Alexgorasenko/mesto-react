@@ -78,9 +78,7 @@ function App() {
               name="name"
               placeholder="Введите имя"
               id="name-input"
-              required
-              minlength="2"
-              maxlength="40"/>
+              required/>
             <span className="form__input-error name-input-error">
               Вы пропустили это поле.
             </span>
@@ -92,9 +90,7 @@ function App() {
               name="about"
               placeholder="Введите описание"
               id="vocation-input"
-              required
-              minlength="2"
-              maxlength="200"/>
+              required/>
             <span className="form__input-error vocation-input-error">
               Вы пропустили это поле.
             </span>
@@ -109,8 +105,6 @@ function App() {
           <label className="popup__form-label">
             <input
               required
-              minlength="2"
-              maxlength="30"
               type="text"
               className="popup__input popup__input_type_title"
               name="name"

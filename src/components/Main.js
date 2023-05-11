@@ -2,7 +2,6 @@ import React from "react";
 import api from "../utils/Api";
 import Card from "./Card";
 
-
 function Main(props) {
   const [userName, setUserName] = React.useState("");
   const [userDescription, setUserDescription] = React.useState("");
@@ -28,7 +27,7 @@ function Main(props) {
       .catch((err) => {
         console.log(`Ошибка сервера ${err}`);
       });
-  });
+  }, []);
 
   return (
     <>
@@ -69,18 +68,15 @@ function Main(props) {
           ></button>
         </section>
         <section className="places">
-
-
-        { cards.map((card) => {
-          return (
-            <Card 
-            key={card._id}
-            card={card}
-            onCardClick={props.onCardClick}
-            />
-          )
-        })
-}
+          {cards.map((card) => {
+            return (
+              <Card
+                key={card._id}
+                card={card}
+                onCardClick={props.onCardClick}
+              />
+            );
+          })}
         </section>
       </main>
     </>

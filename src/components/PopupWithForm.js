@@ -1,29 +1,23 @@
 import React from "react";
 
-function PopupWithForm({
-    title,
-    name,
-    buttonText,
-    children,
-    onClose,
-    isOpen
-}) {
+function PopupWithForm({ title, name, buttonText, children, onClose, isOpen }) {
   return (
-    <div className={`popup popup-${name} ${isOpen ? 'popup_opened' : ''}`}>
+    <div className={`popup popup-${name} ${isOpen ? "popup_opened" : ""}`}>
       <div className="popup__container">
         <button
           aria-label="Закрытие попапа"
           type="button"
           className="popup__close"
-          onClick={onClose}>
-          </button>
+          onClick={onClose}
+        ></button>
         <h3 className="popup__header">{title}</h3>
         <form
           name={`form-${name}`}
           method="post"
           className="popup__form"
-          id= {`form-${name}`}
-          action="/">
+          id={`form-${name}`}
+          action="/"
+        >
           {children}
           <button type="submit" className="popup__save popup-editing__save">
             {buttonText}
