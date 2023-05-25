@@ -11,8 +11,8 @@ function ImagePopup(props) {
           onClick={props.onClose}
         ></button>
         <img
-          src={props.card && props.card.link}
-          alt={props.card && props.card.name}
+          src={props.card?.link}
+          alt={props.card?.name}
           className="popup-img__image"
         />
         <h3 className="popup-img__header">{props.card && props.card.name}</h3>

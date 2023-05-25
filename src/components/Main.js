@@ -6,7 +6,6 @@ function Main(props) {
   const currentUserInfo = React.useContext(CurrentUserContext);
 
   return (
-    <>
       <main className="content">
         <section className="profile">
           <div className="profile__information">
@@ -57,7 +56,6 @@ function Main(props) {
           })}
         </section>
       </main>
-    </>
   );
 }
 

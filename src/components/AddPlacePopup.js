@@ -14,6 +14,11 @@ function AddPlacePopup(props) {
     });
   }
 
+  React.useEffect(() => {
+    refName.current.value = "";
+    refLink.current.value = "";
+  }, [props.isOpen]);
+
   return (
     <PopupWithForm
       title="Новое место"
