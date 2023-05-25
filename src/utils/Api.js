@@ -4,13 +4,12 @@ export class Api {
     this.headers = options.headers;
   }
 
-
-__checkResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject("Error");
-}
+  __checkResponse = (res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject("Error");
+  };
 
   getUserInfo() {
     return fetch(`${this.url}/users/me`, {
@@ -30,12 +29,12 @@ __checkResponse = (res) => {
     }).then(this.__checkResponse);
   }
 
-  patchAvatar(avatar) {
+  patchAvatar(data) {
     return fetch(`${this.url}/users/me/avatar`, {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({
-        avatar: avatar,
+        avatar: data.avatar,
       }),
     }).then(this.__checkResponse);
   }
@@ -59,7 +58,7 @@ __checkResponse = (res) => {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this.url}/cards/${cardId._id}`, {
+    return fetch(`${this.url}/cards/${cardId}`, {
       method: "DELETE",
       headers: this.headers,
     }).then(this.__checkResponse);
@@ -80,11 +79,11 @@ __checkResponse = (res) => {
   }
 }
 
- const api = new Api({
+const api = new Api({
   url: "https://mesto.nomoreparties.co/v1/cohort-64",
   headers: {
     authorization: "6d7b7fcc-02c2-486a-98c6-85a70a7d5eaf",
     "Content-Type": "application/json",
   },
 });
-export default api
+export default api;

@@ -1,33 +1,9 @@
 import React from "react";
-import api from "../utils/Api";
 import Card from "./Card";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Main(props) {
-  const [userName, setUserName] = React.useState("");
-  const [userDescription, setUserDescription] = React.useState("");
-  const [userAvatar, setUserAvatar] = React.useState("");
-  const [cards, setCards] = React.useState([]);
-
-  React.useEffect(() => {
-    api
-      .getUserInfo()
-      .then((data) => {
-        setUserName(data.name);
-        setUserDescription(data.about);
-        setUserAvatar(data.avatar);
-      })
-      .catch((err) => {
-        console.log(`Ошибка сервера ${err}`);
-      });
-    api
-      .getPlaceCards()
-      .then((data) => {
-        setCards(data);
-      })
-      .catch((err) => {
-        console.log(`Ошибка сервера ${err}`);
-      });
-  }, []);
+  const currentUserInfo = React.useContext(CurrentUserContext);
 
   return (
     <>
@@ -36,8 +12,8 @@ function Main(props) {
           <div className="profile__information">
             <div className="profile__avatar-container">
               <img
-                src={userAvatar}
-                alt="Аватар профиля"
+                src={currentUserInfo.avatar}
+                alt={currentUserInfo.name}
                 className="profile__avatar"
               />
               <button
@@ -49,7 +25,7 @@ function Main(props) {
             </div>
             <div className="profile__description">
               <div className="profile__editing">
-                <h1 className="profile__name">{userName}</h1>
+                <h1 className="profile__name">{currentUserInfo.name}</h1>
                 <button
                   aria-label="Добавление места "
                   type="button"
@@ -57,7 +33,7 @@ function Main(props) {
                   onClick={props.onEditProfile}
                 ></button>
               </div>
-              <p className="profile__vocation">{userDescription}</p>
+              <p className="profile__vocation">{currentUserInfo.about}</p>
             </div>
           </div>
           <button
@@ -68,12 +44,14 @@ function Main(props) {
           ></button>
         </section>
         <section className="places">
-          {cards.map((card) => {
+          {props.cards.map((card) => {
             return (
               <Card
                 key={card._id}
                 card={card}
                 onCardClick={props.onCardClick}
+                onCardLike={props.onCardLike}
+                onCardDelete={props.onCardDelete}
               />
             );
           })}
