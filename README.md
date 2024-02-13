@@ -19,4 +19,7 @@
 5.Рендер карточек через API
 
 
+Ссылка на репозиторий: https://github.com/Alexgorasenko/mesto-react/
+
+
 
